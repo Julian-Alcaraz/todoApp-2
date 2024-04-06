@@ -1,0 +1,15 @@
+<h2>{{ welcome }}</h2>
+<ul>
+  <li *ngFor="let task of tasks">
+    {{task}}
+  </li>
+</ul>
+<br>
+<h2> {{ 'HOLA'.repeat(4) }}</h2>
+<p>La suma de 3 +3 es {{ 3+3}}</p>
+<p>Hola soy {{ name }} tengo {{ edad }}</p>
+<input type="text" [value]="name" id=""><br>
+<button  [disabled]="disabled" class="" > button </button>
+<h3>{{person.name + person.surname}}</h3>
+<label for="">edad</label>
+<input type="number" [value]="person.edad">
