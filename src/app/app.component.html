@@ -1,1 +1,17 @@
 <router-outlet></router-outlet>
+<div *ngIf="false">
+
+    <h1>app data</h1>
+    <h2>{{data}}</h2>
+    <div *ngIf=data>
+        <hr>
+        <h2>Muestro el componente 1</h2>
+        <app-comp1></app-comp1>
+    </div>
+    <div *ngIf=!data>
+        <hr>
+        <h2>Muestro el componente 2</h2>
+        <button class="btn btn-primary">aña</button>
+        <app-comp2></app-comp2>
+    </div>
+</div>

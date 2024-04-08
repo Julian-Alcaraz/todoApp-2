@@ -1,15 +1,58 @@
-<h2>{{ welcome }}</h2>
-<ul>
-  <li *ngFor="let task of tasks">
-    {{task}}
-  </li>
-</ul>
-<br>
-<h2> {{ 'HOLA'.repeat(4) }}</h2>
-<p>La suma de 3 +3 es {{ 3+3}}</p>
-<p>Hola soy {{ name }} tengo {{ edad }}</p>
-<input type="text" [value]="name" id=""><br>
-<button  [disabled]="disabled" class="" > button </button>
-<h3>{{person.name + person.surname}}</h3>
-<label for="">edad</label>
-<input type="number" [value]="person.edad">
+<div class="container" *ngIf="false">
+
+  <h2>{{ welcome }}</h2>
+  <ul>
+    <p>total: {{tasks.length}}</p>
+
+    <li *ngFor="let task of tasks; index as i">
+      {{i}}  {{task}} 
+    </li>
+  </ul>
+  <br>
+  <h2 class=""> {{ 'HOLA'.repeat(4) }}</h2>
+  <p>La suma de 3 +3 es {{ 3+3}}</p>
+  <p>Hola soy {{ name }} tengo {{ edad }}</p>
+  <input type="text" [value]="name" id=""><br>
+  <button [disabled]="disabled" class="btn btn-primary"> button </button>
+  <h3>{{person.name + person.surname}}</h3>
+  <label for="">edad</label>
+  <input type="number" [value]="person.edad">
+  <br>
+  <button class="btn btn-primary" (click)="pulsado()"> click me</button>
+  <button class="btn btn-primary" (dblclick)="pulsado()"> dbclick me</button>
+  <p>(change)</p>
+  <input type="number" [value]="person.edad" (change)="change($event)">
+  <p>(change)</p>
+  <input type="text" [value]="person.edad" (change)="change($event)">
+  <p>(keydown)</p>
+  <input type="text" [value]="person.name" (keydown)="keydown($event)">
+  <input type="text" [value]="person.name" (keydown.shift.t)="pulsado()">
+  <hr>
+  <h2>signals</h2>
+  <p>(change reactivo al salir del input) </p>
+  {{nameReactivo()}} <br>
+  <input type="text" [value]="nameReactivo()" (change)="change($event)">
+  <p>(change reactivo al salir del input) </p>
+  <input type="text" [value]="person.name" (keydown)="keydown($event)">
+  {{nameReactivo()}} <br>
+  
+  <ul>
+    <p>total: {{tasks2().length}}</p>
+    <li *ngFor="let task of tasks2(); index as i">
+      {{i}} {{task}}
+    </li>
+  </ul>
+  <div [ngSwitch]="nameReactivo()">
+    <p *ngSwitchCase="'julian'">SOY JULIAN</p>
+    <p *ngSwitchCase="'Jorge'">SOY Jorge</p>
+    <p *ngSwitchCase="'Pedro'">SOY Pedro</p>
+    <p *ngSwitchDefault>Soy otra persona</p>
+  </div>
+<hr> INputs
+</div>
+<div class="container">
+  <input type="color" [formControl]="colorCtrl">
+
+</div>
+
+
