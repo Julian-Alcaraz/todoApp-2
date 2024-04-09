@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
+import { Subscription } from 'rxjs';
+import { OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-comp1',
@@ -8,10 +10,11 @@ import { SharedService } from '../../services/shared.service';
   templateUrl: './comp1.component.html',
   styleUrl: './comp1.component.css'
 })
-export class Comp1Component implements OnInit {
+export class Comp1Component implements OnInit, OnDestroy{
     public value=false;
     public data:any;
-  constructor( private _sharedService: SharedService){
+    public variableCompartida$:Subscription;
+    constructor( private _sharedService: SharedService){
     
   }
   cambiarData(){
@@ -19,11 +22,14 @@ export class Comp1Component implements OnInit {
     this._sharedService.setData(this.value)
   }
   ngOnInit(): void {
-    this._sharedService.getData().subscribe({
+    this.variableCompartida$ = this._sharedService.getData().subscribe({
       next: value=>{
         this.data= value
         console.log("componete1 ", this.data)
       }
      })
+  }
+  ngOnDestroy(): void {
+    this.variableCompartida$.unsubscribe();
   }
 }

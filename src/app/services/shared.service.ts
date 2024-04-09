@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  data = new BehaviorSubject<any>(true)
+  data:  BehaviorSubject<any> = new BehaviorSubject<any>(true)
   constructor() { }
   setData(value:any){
     this.data.next(value)

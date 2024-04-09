@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
@@ -14,22 +14,13 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class LabsComponent {
   colorCtrl= new FormControl
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  widthCtrl= new FormControl(50,{validators:[Validators.required,Validators.min(10)]})
+  heigthCtrl= new FormControl(50,{validators:[Validators.required,Validators.min(10)]})
+  constructor(){
+    this.colorCtrl.valueChanges.subscribe({next: (value)=>{console.log(value)}})
+    this.widthCtrl.valueChanges.subscribe({next: (value)=>{console.log(value)}})
+    this.widthCtrl.valueChanges.subscribe({next: (value)=>{console.log(value)}})
+  }
 
 
 
@@ -56,19 +47,6 @@ export class LabsComponent {
     "APP 3",
     "APP 4"
   ]);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   pulsado(){
     alert("hola")
