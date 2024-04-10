@@ -1,0 +1,24 @@
+<h1>New sintaxis</h1>
+<h2>if else</h2>
+@if (name()== "Julian"){
+    <div>Soy julian</div>
+}@else{
+    <div>Soy otro</div>
+}
+<h2>for</h2>
+<ul>
+    @for (task of tasks; track task ; let i = $index){
+        <li>{{i}} : {{task}}</li> 
+    }@empty {
+        <strong>No hay tareas</strong>
+    }
+</ul>
+<h2>Switch</h2>
+@switch(name()){
+    @case('Julian'){<p>soy Julian</p>}
+    @case('Pedro'){<p>soy Julian</p>}
+    @case('Roberto'){<p>soy Julian</p>}
+    @case('Messi'){<p>soy Julian</p>}
+    @default { <p>soy otro</p> }
+}
+

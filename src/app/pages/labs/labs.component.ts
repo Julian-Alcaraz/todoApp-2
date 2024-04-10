@@ -1,21 +1,42 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SintaxisNewComponent } from '../sintaxis-new/sintaxis-new.component';
 
 @Component({
   selector: 'app-labs',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SintaxisNewComponent
     ],
   templateUrl: './labs.component.html',
   styleUrl: './labs.component.css'
 })
 export class LabsComponent {
   colorCtrl= new FormControl
-  widthCtrl= new FormControl(50,{validators:[Validators.required,Validators.min(10)]})
-  heigthCtrl= new FormControl(50,{validators:[Validators.required,Validators.min(10)]})
+  widthCtrl= new FormControl(50,{
+    nonNullable:true,
+    validators:[
+      Validators.required,
+      Validators.min(10)
+    ]}
+  )
+  heigthCtrl= new FormControl(50,{
+    nonNullable:true,
+    validators:[
+      Validators.required,
+      Validators.min(10)
+    ]}
+  )
+  nameCtrl= new FormControl('',{
+    nonNullable:true,
+    validators:[
+      Validators.required,
+      Validators.minLength(4)
+    ]}
+  )
   constructor(){
     this.colorCtrl.valueChanges.subscribe({next: (value)=>{console.log(value)}})
     this.widthCtrl.valueChanges.subscribe({next: (value)=>{console.log(value)}})
